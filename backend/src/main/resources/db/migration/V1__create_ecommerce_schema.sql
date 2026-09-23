@@ -24,6 +24,7 @@ CREATE TABLE customers (
     birth_date DATE NOT NULL,
     phone VARCHAR(20) NOT NULL CHECK ( phone ~ '^\+?[0-9\s\-]+$' ),
     email VARCHAR(255) UNIQUE NOT NULL,
+    FOREIGN KEY (address_id) REFERENCES address(id) ON DELETE CASCADE,
     active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -58,4 +59,14 @@ CREATE TABLE reviews (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
     FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
+);
+
+CREATE TABLE address (
+    id BIGSERIAL PRIMARY KEY,
+    cep BIGINT,
+    state TEXT,
+    city TEXT,
+    neighborhood TEXT,
+    street TEXT,
+    number BIGINT
 );

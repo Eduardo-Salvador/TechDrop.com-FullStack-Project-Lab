@@ -2,14 +2,15 @@ package com.salvadoreduardo.ecommerce.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "categories")
-public class Category implements Serializable {
+@Table(name = "address")
+public class Address implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -17,16 +18,20 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String description;
+    private Integer cep;
+    private String state;
+    private String city;
+    private String neighborhood;
+    private String street;
+    private Integer number;
 
-    public Category() {}
+    public Address() {}
 
-    public Category(String name) {
+    public Address(String name) {
         this.name = name;
     }
 
-    public Category(String name, String description) {
+    public Address(String name, String description) {
         this.name = name;
         this.description = description;
     }
