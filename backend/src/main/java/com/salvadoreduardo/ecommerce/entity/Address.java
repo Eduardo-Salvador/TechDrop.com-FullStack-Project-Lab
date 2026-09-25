@@ -17,22 +17,37 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Integer cep;
+    private String cep;
     private String state;
     private String city;
     private String neighborhood;
     private String street;
+    private String complement;
     private Integer number;
 
-    public Address() {}
-
-    public Address(String name) {
-        this.name = name;
+    public Address() {
     }
 
-    public Address(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public Address(String cep) {
+        this.cep = cep;
+    }
+
+    public Address(String cep, String state, String city, String neighborhood, String street, String complement) {
+        this.cep = cep;
+        this.state = state;
+        this.city = city;
+        this.neighborhood = neighborhood;
+        this.street = street;
+        this.complement = complement;
+    }
+
+    public Address(String cep, String state, String city, String neighborhood, String street, String complement, Integer number) {
+        this.cep = cep;
+        this.state = state;
+        this.city = city;
+        this.neighborhood = neighborhood;
+        this.street = street;
+        this.complement = complement;
+        this.number = number;
     }
 }

@@ -36,4 +36,26 @@ public class GlobalExceptionHandler {
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseError);
     }
+
+    @ExceptionHandler(InvalidCepException.class)
+    public ResponseEntity<ResponseError> handleInvalidCep(InvalidCepException e) {
+        ResponseError responseError = new ResponseError(
+                java.time.LocalDateTime.now(),
+                HttpStatus.BAD_GATEWAY.value(),
+                "Input rule Error",
+                List.of(e.getMessage())
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseError);
+    }
+
+    @ExceptionHandler(CepNotFoundException.class)
+    public ResponseEntity<ResponseError> handleCepNotFound(CepNotFoundException e) {
+        ResponseError responseError = new ResponseError(
+                java.time.LocalDateTime.now(),
+                HttpStatus.BAD_GATEWAY.value(),
+                "Input rule Error",
+                List.of(e.getMessage())
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseError);
+    }
 }
